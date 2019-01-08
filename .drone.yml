@@ -27,9 +27,9 @@ steps:
     - git describe --tags $(git rev-list --tags --max-count=1) > .tags
   when:
     branch:
-        #    - master
+        #- master
     event:
-        # - push
+        #- push
 
 - name: push-tag
   image: plugins/docker
@@ -41,9 +41,9 @@ steps:
       from_secret: mikroapp_docker_password
   when:
     branch:
-        # - master
+        #- master
     event:
-        # - push
+        #- push
 
 - name: push-sha
   image: plugins/docker
@@ -59,7 +59,7 @@ steps:
     branch:
         #- devel
     event:
-        # - push
+        #- push
 
 - name: deploy
   image: rubykube/microkube:0.1.0
@@ -72,6 +72,6 @@ steps:
     - bundle exec rake payload:send[tower,$latest_image,http://www.microkube.com:1337]
   when:
     branch:
-        # - master
+        #- master
     event:
         #- push
